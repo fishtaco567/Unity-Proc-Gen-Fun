@@ -47,21 +47,3 @@ namespace SharpNoise.Generators
     }
 
 }
-using UnityEngine;
-using System.Collections;
-
-public class GeneratorBlend : MonoBehaviour
-{
-
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-}

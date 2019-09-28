@@ -32,10 +32,11 @@ namespace SharpNoise
         public float GetNoise1D(float x)
         {
             int xGridPoint = FastFloor(x); //Find the cell the specified number is in
+            x -= xGridPoint;
 
             xGridPoint &= REPITITION_SIZE; //Wrap the cell to REPITITION_SIZE, our chosen repeat size
 
-            float c0 = perm[xGridPoint] * PERM_TO_n1_1 - 1; //Dot products
+            float c0 = perm[xGridPoint] * PERM_TO_n1_1 - 1;
             float c1 = perm[xGridPoint + 1] * PERM_TO_n1_1 - 1;
 
             return Lerp(c0, c1, Fade(x)); //Interpolate across the X axis
@@ -45,6 +46,8 @@ namespace SharpNoise
         {
             int xGridPoint = FastFloor(x); //Find the cell the specified number is in
             int yGridPoint = FastFloor(y);
+            x -= xGridPoint;
+            y -= yGridPoint;
 
             xGridPoint &= REPITITION_SIZE; //Wrap the cell to REPITITION_SIZE, our chosen repeat size
             yGridPoint &= REPITITION_SIZE;
@@ -67,6 +70,9 @@ namespace SharpNoise
             int xGridPoint = FastFloor(x); //Find the cell the specified number is in
             int yGridPoint = FastFloor(y);
             int zGridPoint = FastFloor(z);
+            x -= xGridPoint;
+            y -= yGridPoint;
+            z -= zGridPoint;
 
             xGridPoint &= REPITITION_SIZE; //Wrap the cell to REPITITION_SIZE, our chosen repeat size
             yGridPoint &= REPITITION_SIZE;
@@ -101,6 +107,10 @@ namespace SharpNoise
             int yGridPoint = FastFloor(y);
             int zGridPoint = FastFloor(z);
             int wGridPoint = FastFloor(w);
+            x -= xGridPoint;
+            y -= yGridPoint;
+            z -= zGridPoint;
+            w -= wGridPoint;
 
             xGridPoint &= REPITITION_SIZE; //Wrap the cell to REPITITION_SIZE, our chosen repeat size
             yGridPoint &= REPITITION_SIZE;
@@ -177,24 +187,6 @@ namespace SharpNoise
         {
             return x > 0 ? (int)x : (int)x - 1;
         }
-
-    }
-}
-using UnityEngine;
-using System.Collections;
-
-public class ValueNoise : MonoBehaviour
-{
-
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
 
     }
 }
